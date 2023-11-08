@@ -35,9 +35,9 @@ def get_unmanaged_inbound_rules(region, default_cidr, sg_id):
 
 
 @click.command()
-@click.argument('managed-cidr', type=str, help='The CIDR block managed by terraform and that should be ignored'
-@click.argument('sg-id', type=str, help='The ID of the security group to check')
-@click.option('--region', default='eu-west-2', help='The AWS region (default: eu-west-2)')
+@click.argument('managed-cidr', type=str)
+@click.argument('sg-id', type=str)
+@click.argument('region', default='eu-west-2')
 def main(managed_cidr, sg_id, region):
     # Get the non-default inbound security rules
     inbound_rules = get_unmanaged_inbound_rules(region=region, managed_cidr=managed_cidr, sg_id=sg_id)
